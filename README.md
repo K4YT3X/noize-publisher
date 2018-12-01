@@ -13,6 +13,18 @@ This is a program to be deployed on endpoint devices which will report sound lev
 
 ## Usages
 
+### Prerequesites
+
+#### System
+
+- Python 3
+
+#### Python Libraries
+
+- numpy
+- paho-mqtt
+- sounddevice
+
 ### Installation
 
 First we have to download noise publisher (on the IoT device). You may either clone or download the source code of noise publisher.
@@ -24,8 +36,8 @@ $ git clone https://github.com/K4YT3X/noize-publisher.git
 Then you can install dependencies via either standalone `pip` or the pip module within python.
 
 ```bash
-noize-publisher/bin/$ pip install -r requirements.txt  # Install via standalone pip
-noize-publisher/bin/$ python -m pip install -r requirements.txt  # Install via python pip module
+noize-publisher/$ pip install -r requirements.txt  # Install via standalone pip
+noize-publisher/$ python -m pip install -r requirements.txt  # Install via python pip module
 ```
 
 After that, you can simply run noise publisher with one command, where the `device-id` is what you want to call the device. Noize clients will use this as an identifier to distinguish the devices.
