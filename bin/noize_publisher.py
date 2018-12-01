@@ -59,8 +59,9 @@ def serve():
     gatherer = NoiseGatherer()
     while True:
         level = gatherer.get_level()
-        print('[NoizePublisher]: Publishing Level: {}'.format(level))
-        publisher.publish(int(round(gatherer.get_level()), 0))
+        int_level = int(round(level, 0))
+        print('[NoizePublisher]: Publishing Level: {}'.format(int_level))
+        publisher.publish(int_level)
 
 
 if __name__ == '__main__':
