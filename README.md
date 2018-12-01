@@ -13,7 +13,7 @@ This is a program to be deployed on endpoint devices which will report sound lev
 
 ## Usages
 
-### Prerequesites
+### Prerequisites
 
 #### System
 
