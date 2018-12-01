@@ -14,8 +14,8 @@ Licensed under the GNU General Public License Version 3 (GNU GPL v3),
 Partial code originally by @Ryan Martin at stackoverflow.
 https://stackoverflow.com/a/40157297
 """
-import sounddevice
 import numpy
+import sounddevice
 
 
 class NoiseGatherer:
@@ -28,9 +28,17 @@ class NoiseGatherer:
         self.volume_norm = 0
 
     def get_level(self):
+        """ Get the average sound level for 5 seconds
+
+        Returns sound level in int. The returned value
+        has no scientific unit.
+        """
         with sounddevice.Stream(callback=self._parse_level):
             sounddevice.sleep(5 * 1000)
         return self.volume_norm
 
     def _parse_level(self, indata, outdata, frames, time, status):
+        """ Parse volume normal with numpy and passes
+        value to self.volume_norm.
+        """
         self.volume_norm = numpy.linalg.norm(indata) * 10

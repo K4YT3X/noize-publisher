@@ -16,6 +16,8 @@ import paho.mqtt.client as mqtt
 import sys
 import traceback
 
+VERSION = '1.0.0'
+
 
 class NoizePublisher:
     """ Noize Publisher
@@ -50,17 +52,22 @@ class NoizePublisher:
 
 
 def serve():
+    """ Start gathering noise level and publish them to mqtt topoic.
+    """
     publisher = NoizePublisher('noize.flexio.org', 'noize/{}'.format(sys.argv[1]))
     publisher.init()
     gatherer = NoiseGatherer()
     while True:
         level = gatherer.get_level()
-        print('[NoizePublisher]: Publishing Level: {}'.format(level), file=sys.stderr)
+        print('[NoizePublisher]: Publishing Level: {}'.format(level))
         publisher.publish(int(round(gatherer.get_level()), 0))
 
 
 if __name__ == '__main__':
     try:
+        if len(sys.argv) < 2:
+            print('ERROR: No device ID given', file=sys.stderr)
+            print('Usage: ./{} [device ID]'.format(__file__), file=sys.stderr)
         serve()
     except Exception:
         traceback.print_exc()
