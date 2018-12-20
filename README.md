@@ -6,6 +6,7 @@
 
 - Initial release of noize publisher.
 - Included basic noise level measuring and publishing functionality.
+- Created for the University of Toronto Hack Day
 
 ## Description
 
